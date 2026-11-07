@@ -1,0 +1,72 @@
+[project]
+name = "getnet-support"
+version = "0.1.0"
+description = "Multi-agent customer support for Getnet merchants (router, knowledge RAG, support tools, human oversight)."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic-settings",
+  "langgraph",
+  "langgraph-checkpoint-postgres",
+  "langchain-core",
+  "langchain-anthropic",
+  "langchain-ollama",
+  "psycopg[binary,pool]",
+  "pgvector",
+  "fastembed",
+  "httpx",
+  "pyjwt",
+  "prometheus-client",
+  "ddgs",
+  "pypdf>=7.0.0",
+  "langchain-openai>=1.7.4",
+  "langchain-google-genai>=4.4.3",
+  "langchain-aws>=1.9.2",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "vulture",
+    "pylint",
+]
+
+[tool.uv]
+package = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "S", "PL", "BLE", "T20"]
+ignore = ["PLR0913"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101", "PLR2004"]
+"scripts/**" = ["T201"]
+"evals/**" = ["T201"]
+"app/demo.py" = ["T201"]
+
+[tool.mypy]
+strict = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["lxml.*", "ddgs.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: needs network or a real model (excluded by default)"]
+addopts = "-m 'not live'"

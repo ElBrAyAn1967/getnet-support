@@ -1,0 +1,48 @@
+# docker compose up -d --wait   →   db (healthy) → ingest (completes) → api (healthy)
+# The database publishes no port; the API listens on localhost only. `--scale api=2` uses ports 8000-8001.
+name: getnet-support
+
+x-app: &app
+  build: .
+  env_file: .env
+  extra_hosts:
+    - "host.docker.internal:host-gateway"  # LLM_PROVIDER=ollama on the host
+  environment:
+    DATABASE_URL: postgresql://getnet:${POSTGRES_PASSWORD:?run "make env" or set POSTGRES_PASSWORD in .env}@db:5432/getnet
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg16
+    environment:
+      POSTGRES_USER: getnet
+      POSTGRES_DB: getnet
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run "make env" or set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U getnet -d getnet"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  ingest:
+    <<: *app
+    command: ["python", "-m", "app.rag.ingest"]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    <<: *app
+    depends_on:
+      db:
+        condition: service_healthy
+      ingest:
+        condition: service_completed_successfully
+    ports:
+      - "127.0.0.1:8000-8001:8000"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
