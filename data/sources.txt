@@ -1,0 +1,47 @@
+# Ingestion seeds (R-1). One URL per line; Brazil product site first — the challenge scenarios are about it.
+# Measured 2026-11-06: robots.txt is 404 (no restrictions); pages render server-side (no browser needed).
+
+# Card machines (scenario: Get Clássica vs Get Smart)
+https://site.getnet.com.br/todas-as-maquininhas/
+https://site.getnet.com.br/maquininha/get-classica/
+https://site.getnet.com.br/maquininha/get-smart/
+https://site.getnet.com.br/maquininha/get-mini/
+https://site.getnet.com.br/duvidas/get-smart/
+https://site.getnet.com.br/duvidas/operacional/
+
+# Manuals — connectivity, printing, signal icons (scenario: machine not connecting)
+https://site.getnet.com.br/wp-content/uploads/2026/06/getnet_12_06-26_Manul_GetClassica_V2.pdf
+https://site.getnet.com.br/wp-content/uploads/2025/09/Manul-GetSmart.pdf
+https://site.getnet.com.br/wp-content/uploads/2026/06/getnet_12_06-26_Manul_GetMini_V2.pdf
+https://site.getnet.com.br/wp-content/uploads/2026/07/getnet_19_06-26_Manul_GetLite_V4-1.pdf
+
+# Pix (scenario: bank account to receive by Pix)
+https://site.getnet.com.br/pix/
+https://site.getnet.com.br/duvidas/pix/
+https://site.getnet.com.br/duvidas/pix-mais-respostas/
+https://site.getnet.com.br/pix-na-maquininha-getnet/
+https://site.getnet.com.br/duvidas/get-conta/
+
+# Anticipation (scenario: how antecipação works)
+https://site.getnet.com.br/antecipacao/
+https://site.getnet.com.br/duvidas/antecipacao-de-vendas/
+https://site.getnet.com.br/quando-vale-a-pena-antecipar-as-suas-vendas-no-cartao/
+
+# Crediário (scenario: how many installments)
+https://site.getnet.com.br/crediario/
+https://site.getnet.com.br/duvidas/crediario/
+https://site.getnet.com.br/duvidas/parcelado/
+
+# Payment link and WhatsApp (scenario: sell via WhatsApp)
+https://site.getnet.com.br/link-de-pagamento/
+https://site.getnet.com.br/duvidas/link-de-pagamento/
+https://site.getnet.com.br/pagamentos-pelo-whatsapp/
+https://site.getnet.com.br/vender-pelo-whatsapp/
+https://site.getnet.com.br/link-de-pagamento-alternativa-segura/
+
+# Fees and receiving terms (scenario: when yesterday's sales are deposited)
+https://site.getnet.com.br/duvidas/taxas/
+https://site.getnet.com.br/duvidas/app-getnet/
+
+# Corporate site named in the challenge
+https://getnet.net/en
