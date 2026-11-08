@@ -1,0 +1,17 @@
+ruff
+All checks passed!
+mypy
+Success: no issues found in 29 source files
+vulture
+duplicates
+pytest
+........................................................                 [100%]
+56 passed in 1.28s
+deploy
+PASS  A-25  image runs as a non-root user
+PASS  A-25  image has a healthcheck
+PASS  A-25  api ports bound to 127.0.0.1
+PASS  A-25  database publishes no port
+PASS  A-25  api waits for the ingest service
+size
+2070

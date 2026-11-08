@@ -1,0 +1,66 @@
+PASS  A-01  /ready → {"ready":true,"corpus_chunks":137}
+PASS  A-02  S1 agents=['knowledge'] tools=['search_getnet', 'search_getnet'] facts=True
+PASS  A-03  S1 in sequence
+PASS  A-29  S1
+PASS  A-02  S2 agents=['knowledge'] tools=['get_weather'] facts=True
+PASS  A-03  S2 in sequence
+PASS  A-29  S2
+PASS  A-02  S3 agents=['support'] tools=['get_settlements'] facts=True
+PASS  A-03  S3 in sequence
+PASS  A-29  S3
+PASS  A-11  deposit of 2026-11-05 found with today's clock
+PASS  A-02  S4 agents=['knowledge'] tools=['search_getnet'] facts=True
+PASS  A-03  S4 in sequence
+PASS  A-29  S4
+PASS  A-02  S5 agents=['support'] tools=['get_terminal_status'] facts=True
+PASS  A-03  S5 in sequence
+PASS  A-29  S5
+PASS  A-02  S6 agents=['knowledge'] tools=['search_getnet'] facts=True
+PASS  A-03  S6 in sequence
+PASS  A-29  S6
+PASS  A-02  S7 agents=['knowledge'] tools=['get_exchange_rate'] facts=True
+PASS  A-03  S7 in sequence
+PASS  A-29  S7
+PASS  A-02  S8 agents=['support', 'knowledge'] tools=['get_recent_declines', 'search_getnet'] facts=True
+PASS  A-03  S8 in sequence
+PASS  A-29  S8
+PASS  A-02  S9 agents=['knowledge'] tools=['search_getnet'] facts=True
+PASS  A-03  S9 in sequence
+PASS  A-29  S9
+PASS  A-02  S10 agents=['knowledge'] tools=['search_getnet'] facts=True
+PASS  A-03  S10 in sequence
+PASS  A-29  S10
+PASS  A-13  https://open-meteo.com/
+PASS  A-13  https://site.getnet.com.br/crediario/
+PASS  A-13  https://site.getnet.com.br/duvidas/antecipacao-de-vendas/
+PASS  A-13  https://site.getnet.com.br/duvidas/operacional/
+PASS  A-13  https://site.getnet.com.br/duvidas/pix-mais-respostas/
+PASS  A-13  https://site.getnet.com.br/duvidas/pix/
+PASS  A-13  https://site.getnet.com.br/link-de-pagamento-alternativa-segura/
+PASS  A-13  https://site.getnet.com.br/pix-na-maquininha-getnet/
+PASS  A-13  https://site.getnet.com.br/quando-vale-a-pena-antecipar-as-suas-vendas-no-cartao/
+PASS  A-13  https://site.getnet.com.br/vender-pelo-whatsapp/
+PASS  A-13  https://site.getnet.com.br/wp-content/uploads/2025/09/Manul-GetSmart.pdf
+PASS  A-13  https://site.getnet.com.br/wp-content/uploads/2026/06/getnet_12_06-26_Manul_GetClassica_V2.pdf
+PASS  A-13  https://site.getnet.com.br/wp-content/uploads/2026/06/getnet_12_06-26_Manul_GetMini_V2.pdf
+PASS  A-13  https://site.getnet.com.br/wp-content/uploads/2026/07/getnet_19_06-26_Manul_GetLite_V4-1.pdf
+PASS  A-13  https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes
+PASS  A-05  no token → 401
+PASS  A-05  token of cliente1988 for cliente2024 → 403
+PASS  A-05  alg=none → 401
+PASS  A-05  tampered signature → 401
+PASS  A-06  [401, 401, 401, 401, 401] then 429 Retry-After=899
+PASS  A-27  customer on /metrics → 403
+PASS  A-27  operator on /metrics → 200
+PASS  A-08  notices=['pii_redacted'] tools=['get_settlements']
+PASS  A-09  notices=['injection_suspected']
+PASS  A-15  competitors named: []
+PASS  A-16  case=case_6247251fd32d4c799da8 operator reply visible to the customer=True
+PASS  A-17  approved within the turn: {'id': 'case_d4a17be0a2164c26896e', 'status': 'answered'}
+PASS  A-17  each approval is decided once
+PASS  A-17  late approval executed and posted to the conversation: True
+PASS  A-07  production without AUTH_SECRET refuses
+PASS  A-20  keyless: same graph, readable answer
+PASS  A-21  200 notices=['service_unavailable']
+PASS  A-30  4 messages across two replicas
+65/65 passed in 22s

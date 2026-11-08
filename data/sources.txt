@@ -1,3 +1,4 @@
+# project: a084f047-317e-4529-9b51-56a900b6a152
 # Ingestion seeds (R-1). One URL per line; Brazil product site first — the challenge scenarios are about it.
 # Measured 2026-11-06: robots.txt is 404 (no restrictions); pages render server-side (no browser needed).
 
