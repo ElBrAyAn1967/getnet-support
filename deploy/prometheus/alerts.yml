@@ -1,0 +1,47 @@
+# Alerting rules over the metrics the API exposes at /metrics (app/observability.py).
+# Validate: docker run --rm -v "$PWD/deploy/prometheus:/r" --entrypoint promtool prom/prometheus check rules /r/alerts.yml
+groups:
+  - name: getnet-support
+    rules:
+      - alert: ChatFailures
+        expr: |
+          sum(rate(chat_requests_total{outcome="failed"}[5m]))
+            / clamp_min(sum(rate(chat_requests_total[5m])), 1e-9) > 0.05
+        for: 5m
+        labels: {severity: page}
+        annotations:
+          summary: "More than 5% of chat turns failed (provider or dependency down) in the last 5 minutes"
+      - alert: SlowReplies
+        expr: histogram_quantile(0.95, sum by (le) (rate(chat_latency_seconds_bucket[5m]))) > 20
+        for: 10m
+        labels: {severity: ticket}
+        annotations:
+          summary: "p95 reply latency above 20 s for 10 minutes"
+      - alert: RouterCannotPlan
+        expr: sum(rate(router_fallback_total{result="clarify"}[15m])) > 0.05
+        for: 15m
+        labels: {severity: ticket}
+        annotations:
+          summary: "The router keeps failing to produce a valid plan (model or prompt regression)"
+      - alert: UngroundedFiguresRising
+        expr: sum(rate(grounding_removals_total[30m])) / clamp_min(sum(rate(chat_requests_total[30m])), 1e-9) > 0.2
+        for: 30m
+        labels: {severity: ticket}
+        annotations:
+          summary: "Grounding is removing figures from more than 20% of replies (the model is inventing numbers)"
+      - alert: EscalationSurge
+        expr: sum(increase(escalations_total[15m])) > 20
+        labels: {severity: ticket}
+        annotations:
+          summary: "More than 20 human cases opened in 15 minutes: check the knowledge base or an outage"
+      - alert: ModelCostSpike
+        expr: increase(llm_cost_usd_total[1h]) > 10
+        labels: {severity: ticket}
+        annotations:
+          summary: "Estimated model cost above 10 USD in the last hour"
+      - alert: ApiDown
+        expr: up{job="getnet-support"} == 0
+        for: 2m
+        labels: {severity: page}
+        annotations:
+          summary: "The API is not answering /metrics scrapes"
