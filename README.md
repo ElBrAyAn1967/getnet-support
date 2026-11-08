@@ -248,6 +248,8 @@ session, bounded by the `clock-start` and `clock-end` tags; each pull request
 is one step of that session. The video and the real-model evaluation runs were
 produced after the clock, and say so.
 
+The construction session itself ran in about 45 minutes (see the `clock-start` / `clock-end` tags). A few commits after `clock-end` only stabilise CI (a lockfile, import formatting, and the fake-model regression floor calibrated to its measured baseline); they change no application behaviour and are not part of the timed session.
+
 ## Project id
 
 `a084f047-317e-4529-9b51-56a900b6a152` — a stable build identifier, surfaced by `/health` and checked in CI.
