@@ -2,10 +2,10 @@
 """FastAPI app: routes only (H-1..H-8). Startup validates settings, migrates, and prepares demo identities."""
 
 import secrets
-from pathlib import Path
 import time
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Annotated, Any, Literal
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
