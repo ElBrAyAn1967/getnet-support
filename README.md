@@ -169,8 +169,8 @@ graph** and writes `evals/results/<date>-<model>.json`.
 | Faithfulness | judge (Claude Sonnet 5.5, a different model): every claim supported by what the writer saw | — | **0.89** (24/27) |
 | Recall@5 · MRR@10 | retrieval, relevant = the chunk's **text** carries the answer | 0.92 · 0.83 | 0.92 · 0.83 |
 
-Results: `evals/results/2026-11-06-claude-opus-5-5-claude-code.json` (every answer, the judge's reason for each
-verdict, token use), `evals/results/2026-11-06-fake-fake.json`, `evals/results/2026-11-06-acceptance.txt` (65/65)
+Results: `evals/results/2026-11-07-claude-opus-5-5-claude-code-run3.json` (every answer, the judge's reason for each
+verdict, token use), `evals/results/2026-11-07-fake-fake.json`, `evals/results/2026-11-06-acceptance.txt` (65/65)
 and `evals/results/2026-11-06-quality.txt`.
 
 * **The judge is a different model** from the writer, and it is trusted only if it rejects three canaries known to
