@@ -1,0 +1,10 @@
+{"id": "S1", "message": "What are the differences between Get Clássica and Get Smart?", "agents": ["knowledge"], "facts": ["Clássica", "Smart"]}
+{"id": "S2", "message": "What is the weather forecast for tomorrow in Porto Alegre?", "agents": ["knowledge"], "tools": ["get_weather"], "facts": ["Porto Alegre"]}
+{"id": "S3", "message": "When will yesterday's sales be deposited in my account?", "agents": ["support"], "tools": ["get_settlements"], "facts": ["{yesterday}"]}
+{"id": "S4", "message": "Do I need a bank account to receive payments via Pix?", "agents": ["knowledge"], "facts": ["Pix"]}
+{"id": "S5", "message": "My card machine is not connecting to the internet.", "agents": ["support"], "tools": ["get_terminal_status"], "facts": ["12"]}
+{"id": "S6", "message": "How does receivables anticipation (antecipação) work?", "agents": ["knowledge"], "facts": ["antecip"]}
+{"id": "S7", "message": "What is the euro exchange rate today?", "agents": ["knowledge"], "tools": ["get_exchange_rate"], "facts": ["EUR"]}
+{"id": "S8", "message": "My machine shows a 'transaction declined' error.", "agents": ["support", "knowledge"], "tools": ["get_recent_declines"], "facts": ["51"]}
+{"id": "S9", "message": "In how many installments can I sell using crediário?", "agents": ["knowledge"], "facts": ["48"]}
+{"id": "S10", "message": "Can I sell through WhatsApp using a Payment Link?", "agents": ["knowledge"], "facts": ["WhatsApp"]}

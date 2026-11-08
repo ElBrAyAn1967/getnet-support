@@ -1,0 +1,28 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  quality:  # A-26: lint, types, dead code, duplication, unit + graph tests (no network, no key)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: { version: "0.13.7" }
+      - run: uv sync --frozen
+      - run: scripts/quality.sh
+      - run: uv run python scripts/check_readme.py
+
+  e2e:  # A-01: the stack starts from a clean checkout; then the acceptance tests and the eval gate
+    runs-on: ubuntu-latest
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: { version: "0.13.7" }
+      - run: uv sync --frozen
+      - run: make up
+      - run: docker compose up -d --scale api=2 --no-recreate --wait
+      - run: make -s creds > .creds && uv run python scripts/acceptance.py http://127.0.0.1:8000 --credentials .creds --replica http://127.0.0.1:8001
+      - run: docker compose run --rm --user "$(id -u):$(id -g)" -v ./evals:/app/evals api python -m evals.run --gate
+      - if: failure()
+        run: docker compose logs --no-color | tail -200
