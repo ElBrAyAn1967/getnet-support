@@ -498,7 +498,7 @@
     "restart_terminal"
    ],
    "notices": [],
-   "answer": "restart_terminal {'terminal_id': 'GS-1988-01'}: waiting for an operator; the merchant will see the outcome in this conversation (case case_4772891205a848678039).\n\nCase: case_4772891205a848678039",
+   "answer": "restart_terminal {'terminal_id': 'GS-1988-01'}: waiting for an operator; the merchant will see the outcome in this conversation (case case_6f0c5510d82142ef8a22).\n\nCase: case_6f0c5510d82142ef8a22",
    "route": true,
    "tools_ok": true,
    "case_ok": true,
