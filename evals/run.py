@@ -30,7 +30,8 @@ from evals.judge import judge_case, trusted_judge
 
 EVALS = Path(__file__).resolve().parent
 # Quality bar for a real model. The fake model only stitches source text, so CI holds it to a regression floor
-# (its measured baseline: route ~0.88, facts ~0.48) instead: a drop below the floor means routing, tools or retrieval broke, not that the fake got worse.
+# (its measured baseline: route ~0.88, facts ~0.48) instead: a drop below the floor means routing,
+# tools or retrieval broke, not that the fake got worse.
 THRESHOLDS = {"route": 0.9, "tools": 0.9, "facts": 0.8, "forbid": 1.0, "recall_at_5": 0.8, "faithful": 0.9}
 FAKE_FLOOR = {"route": 0.85, "tools": 0.9, "facts": 0.45, "forbid": 1.0, "recall_at_5": 0.9}
 TOPICS = {"classica": r"cl[aá]ssica", "smart": r"get smart", "pix": r"\bpix\b", "antecipacao": r"antecipa",
